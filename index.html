@@ -36,16 +36,14 @@
 
         /* Header & Navigation */
         header {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
-            background-size: cover;
-            background-position: center;
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8));
             color: white;
-            padding: 20px 0;
+            padding: 15px 0;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.2);
         }
 
         nav {
@@ -54,14 +52,30 @@
             align-items: center;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--secondary);
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
-        .logo span {
+        .logo-icon {
+            color: var(--secondary);
+            font-size: 2rem;
+            position: relative;
+        }
+
+        .logo-icon .bridge-icon {
+            font-size: 2.5rem;
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: bold;
             color: white;
+        }
+
+        .logo-text span {
+            color: var(--secondary);
         }
 
         .nav-links {
@@ -73,11 +87,28 @@
             color: white;
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s;
+            transition: all 0.3s;
+            padding: 8px 0;
+            position: relative;
         }
 
         .nav-links a:hover {
             color: var(--secondary);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            left: 0;
+            bottom: 0;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
         }
 
         .mobile-menu {
@@ -96,7 +127,7 @@
                 top: 100%;
                 left: 0;
                 width: 100%;
-                background: linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9));
+                background: linear-gradient(rgba(0,0,0,0.95), rgba(0,0,0,0.95));
                 padding: 20px;
                 text-align: center;
                 gap: 20px;
@@ -113,7 +144,7 @@
 
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1551782450-17144efb9c50?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80');
             background-size: cover;
             background-position: center;
             height: 100vh;
@@ -127,17 +158,40 @@
         .hero-content {
             max-width: 800px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
         .hero h1 {
             font-size: 3.5rem;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
         }
 
         .hero p {
             font-size: 1.5rem;
             margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(5px);
+        }
+
+        .stars {
+            color: var(--secondary);
+            margin-right: 8px;
         }
 
         .cta-buttons {
@@ -154,6 +208,8 @@
             font-weight: bold;
             transition: all 0.3s;
             display: inline-block;
+            border: none;
+            cursor: pointer;
         }
 
         .btn-primary {
@@ -164,6 +220,7 @@
         .btn-primary:hover {
             background-color: #8B0000;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(183, 28, 28, 0.3);
         }
 
         .btn-secondary {
@@ -174,6 +231,7 @@
         .btn-secondary:hover {
             background-color: #e6c200;
             transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
         }
 
         /* Sections */
@@ -241,6 +299,59 @@
             display: block;
         }
 
+        /* Ratings Section */
+        .ratings-section {
+            background-color: #f9f9f9;
+        }
+
+        .ratings-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .rating-card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .rating-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .rating-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .customer-name {
+            font-weight: bold;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+
+        .rating-date {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        .rating-stars {
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .rating-text {
+            color: #555;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
         /* Menu Section */
         .menu-categories {
             display: flex;
@@ -287,6 +398,7 @@
         .menu-item-image {
             height: 200px;
             overflow: hidden;
+            position: relative;
         }
 
         .menu-item-image img {
@@ -347,6 +459,11 @@
             background-color: rgba(255,255,255,0.1);
             border-radius: 10px;
             backdrop-filter: blur(5px);
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
         }
 
         .contact-item i {
@@ -411,6 +528,13 @@
 
         .footer-links li {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-links i {
+            margin-right: 10px;
+            color: var(--secondary);
         }
 
         .footer-links a {
@@ -467,6 +591,10 @@
             .menu-items {
                 grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             }
+            
+            .ratings-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
 
         @media (max-width: 768px) {
@@ -492,6 +620,10 @@
                 max-width: 300px;
                 text-align: center;
             }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -511,6 +643,10 @@
                 padding: 8px 16px;
                 font-size: 0.9rem;
             }
+            
+            .rating-card {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -519,10 +655,16 @@
     <header>
         <div class="container">
             <nav>
-                <div class="logo">Golden <span>Gate</span></div>
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <i class="fas fa-bridge bridge-icon"></i>
+                    </div>
+                    <div class="logo-text">Golden <span>Gate</span></div>
+                </div>
                 <div class="nav-links" id="navLinks">
                     <a href="#home">Home</a>
                     <a href="#about">About</a>
+                    <a href="#ratings">Ratings</a>
                     <a href="#menu">Menu</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -537,7 +679,17 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <h1>Golden Gate Restaurant</h1>
+                <div class="rating-badge">
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span>4.7/5 from 500+ reviews</span>
+                </div>
+                <h1>Golden Gate <span>Restaurant</span></h1>
                 <p>Flint's Favorite Classic Diner & Coney Island</p>
                 <div class="cta-buttons">
                     <a href="#menu" class="btn btn-primary">View Our Menu</a>
@@ -560,9 +712,72 @@
                     <p>Since our founding, Golden Gate Restaurant has been a cornerstone of the Flint community. We take pride in serving quality, homestyle meals that remind you of grandma's cooking.</p>
                     <p>Our commitment to fresh ingredients, friendly service, and a welcoming atmosphere has made us a local favorite for breakfast, lunch, and dinner. From our famous breakfast specials to our mouth-watering coney islands, every dish is prepared with care and tradition.</p>
                     <p>Whether you're joining us for a quick bite or a family dinner, we promise a dining experience that will keep you coming back for more.</p>
+                    <div style="margin-top: 30px;">
+                        <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
+                    </div>
                 </div>
                 <div class="about-image">
                     <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Golden Gate Restaurant Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ratings Section -->
+    <section id="ratings" class="ratings-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Customer Reviews</h2>
+                <p>See what our loyal customers have to say about their Golden Gate experience</p>
+            </div>
+            <div class="ratings-container">
+                <div class="rating-card">
+                    <div class="rating-header">
+                        <div class="customer-name">Michael Johnson</div>
+                        <div class="rating-date">June 12, 2023</div>
+                    </div>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-text">
+                        "The Twin Towers Breakfast is absolutely fantastic! Best breakfast in Flint. The service is always friendly and the atmosphere feels like home."
+                    </div>
+                </div>
+                <div class="rating-card">
+                    <div class="rating-header">
+                        <div class="customer-name">Sarah Williams</div>
+                        <div class="rating-date">May 28, 2023</div>
+                    </div>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <div class="rating-text">
+                        "Golden Gate has been our family's go-to spot for Sunday breakfast for years. The French toast is amazing, and the coffee is always fresh and hot."
+                    </div>
+                </div>
+                <div class="rating-card">
+                    <div class="rating-header">
+                        <div class="customer-name">Robert Chen</div>
+                        <div class="rating-date">July 5, 2023</div>
+                    </div>
+                    <div class="rating-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="rating-text">
+                        "Best burgers in town! The Golden Gate Burger is a masterpiece. I also love their coney dogs - perfect every single time. Highly recommend!"
+                    </div>
                 </div>
             </div>
         </div>
@@ -702,15 +917,17 @@
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-yelp"></i></a>
                     </div>
                 </div>
                 <div class="footer-column">
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#menu">Menu</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#home">Home</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#about">About Us</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#ratings">Customer Reviews</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#menu">Menu</a></li>
+                        <li><i class="fas fa-chevron-right"></i><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -724,10 +941,10 @@
                 <div class="footer-column">
                     <h3>Hours</h3>
                     <ul class="footer-links">
-                        <li>Monday - Friday: 7am - 9pm</li>
-                        <li>Saturday: 7am - 10pm</li>
-                        <li>Sunday: 7am - 9pm</li>
-                        <li>Breakfast until 11am</li>
+                        <li><i class="far fa-clock"></i> Monday - Friday: 7am - 9pm</li>
+                        <li><i class="far fa-clock"></i> Saturday: 7am - 10pm</li>
+                        <li><i class="far fa-clock"></i> Sunday: 7am - 9pm</li>
+                        <li><i class="fas fa-coffee"></i> Breakfast until 11am</li>
                     </ul>
                 </div>
             </div>
@@ -799,6 +1016,16 @@
                     const icon = mobileMenu.querySelector('i');
                     icon.classList.remove('fa-times');
                     icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Add scroll effect to header
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 100) {
+                    header.style.background = 'linear-gradient(rgba(0,0,0,0.9), rgba(0,0,0,0.9))';
+                } else {
+                    header.style.background = 'linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8))';
                 }
             });
         });
